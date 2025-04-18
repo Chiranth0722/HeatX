@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f9f5;
+    color: #333;
+  }
+  
+  header, footer {
+    background-color: #2f4f4f;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .hero {
+    text-align: center;
+    padding: 3rem;
+    background: #e0f7ec;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    color: #2e7d32;
+  }
+  
+  .hero button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  .feature-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+  }
+  
