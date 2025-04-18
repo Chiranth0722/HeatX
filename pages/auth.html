@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HeatX - Login / Signup</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <h1>Welcome to HeatX</h1>
+
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+
+    <button onclick="login()">Login</button>
+    <button onclick="signup()">Sign Up</button>
+    <button onclick="logout()">Logout</button>
+
+    <p id="userStatus"></p>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyAhBZwf4ebPNBlLfPB0w3uFjcaa9tZb3Yc",
+        authDomain: "heatx-56f5a.firebaseapp.com",
+        projectId: "heatx-56f5a",
+        storageBucket: "heatx-56f5a.firebasestorage.app",
+        messagingSenderId: "980918327594",
+        appId: "1:980918327594:web:4cee02a19fbccaaa2fa653",
+        measurementId: "G-LW18NE3TVM"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      auth.signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          document.getElementById("userStatus").innerText = `Logged in as ${userCredential.user.email}`;
+        })
+        .catch((error) => alert(error.message));
+    }
+
+    function signup() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      auth.createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          document.getElementById("userStatus").innerText = `Signed up as ${userCredential.user.email}`;
+        })
+        .catch((error) => alert(error.message));
+    }
+
+    function logout() {
+      auth.signOut().then(() => {
+        document.getElementById("userStatus").innerText = `Logged out`;
+      });
+    }
+
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        document.getElementById("userStatus").innerText = `Logged in as ${user.email}`;
+      }
+    });
+  </script>
+</body>
+</html>
