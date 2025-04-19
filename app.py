@@ -1,37 +1,34 @@
-from flask import Flask, render_template, request
-import ast
+from flask import Flask, render_template, request, send_from_directory
 
 app = Flask(__name__)
 
-def calculate_ecoscore(code):
-    try:
-        tree = ast.parse(code)
-        functions = sum(isinstance(node, ast.FunctionDef) for node in ast.walk(tree))
-        loops = sum(isinstance(node, (ast.For, ast.While)) for node in ast.walk(tree))
-        lines = len(code.splitlines())
-        score = 100 - (lines * 0.5 + loops * 2 - functions * 1.5)
-        return max(0, min(100, score))
-    except:
-        return 0
+# Serve index.html directly
+@app.route('/')
+def home():
+    return send_from_directory('.', 'index.html')
 
+# Serve CSS and JS files from root
+@app.route('/<path:filename>')
+def serve_static_from_root(filename):
+    return send_from_directory('.', filename)
+
+# Route for /compare
 @app.route('/compare', methods=['GET', 'POST'])
 def compare():
+    result = ""
+    code1 = ""
+    code2 = ""
     if request.method == 'POST':
-        code1 = request.form['code1']
-        code2 = request.form['code2']
-        score1 = calculate_ecoscore(code1)
-        score2 = calculate_ecoscore(code2)
-
-        if score1 > score2:
-            result = f"Code 1 is more optimized. (EcoScore: {score1:.2f} vs {score2:.2f})"
-        elif score2 > score1:
-            result = f"Code 2 is more optimized. (EcoScore: {score2:.2f} vs {score1:.2f})"
+        code1 = request.form.get("code1", "")
+        code2 = request.form.get("code2", "")
+        if len(code1) > len(code2):
+            result = "Code 1 seems more optimized 🌱"
+        elif len(code2) > len(code1):
+            result = "Code 2 seems more optimized 🌱"
         else:
-            result = f"Both codes have the same EcoScore: {score1:.2f}"
+            result = "Both codes are similar in length."
 
-        return render_template('code_comparison.html', code1=code1, code2=code2, result=result)
-
-    return render_template('code_comparison.html', code1="", code2="", result=None)
+    return render_template("code_comparison.html", result=result, code1=code1, code2=code2)
 
 if __name__ == '__main__':
     app.run(debug=True)
