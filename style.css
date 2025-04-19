@@ -12,7 +12,7 @@ main {
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f9f4f8;
+  background-color: #f7f9f4;
   color: #333;
 }
 
@@ -165,7 +165,7 @@ footer {
 }
 
 .feature-card {
-  background-color: #caeeff;
+  background: #e0f7ec;
   border: 2px solid #ddd;
   border-radius: 8px;
   padding: 20px;
