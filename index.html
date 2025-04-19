@@ -12,9 +12,18 @@
 
   <main>
     <section class="hero">
-      <h1>HeatX</h1>
+      <h1>Welcome to HeatX</h1>
       <p class="quote">"Code smarter, greener, better – one line at a time."</p>
       <button onclick="window.location.href='pages/practice.html'">Start Coding</button>
+    </section>
+
+    <section class="user-info">
+      <div class="user-info-container">
+        <h2>Hey, [User's Name]</h2>
+        <p>Your EcoScore: <span id="ecoScore">0</span></p>
+        <p>Total CO₂ Saved: <span id="totalCO2Saved">0 kg</span></p>
+        <p>Total Heat Generated: <span id="totalHeatGenerated">0 °C</span></p>
+      </div>
     </section>
 
     <section class="features">
@@ -35,9 +44,33 @@
         <p>Calculate emissions and CPU heat usage.</p>
       </div>
     </section>
-    
   </main>
 
   <footer id="main-footer"></footer>
+
+  <script>
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        const uid = user.uid;
+        document.getElementById('user-email').innerText = user.email;
+
+        db.collection("users").doc(uid).get()
+          .then((doc) => {
+            if (doc.exists) {
+              const userData = doc.data();
+              document.getElementById('ecoScore').innerText = userData.ecoScore;
+              document.getElementById('totalCO2Saved').innerText = userData.totalCO2Saved;
+              document.getElementById('totalHeatGenerated').innerText = userData.totalHeatGenerated;
+            }
+          })
+          .catch(error => console.error("Error fetching user data: ", error));
+      } else {
+        window.location.href = 'auth.html';
+      }
+    });
+  </script>
 </body>
 </html>
