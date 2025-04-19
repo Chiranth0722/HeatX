@@ -78,23 +78,26 @@ footer {
   cursor: pointer;
 }
 
-/* Hero Section */
+/* Hero Section - Full screen width */
 .hero {
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 5rem 1rem;  /* Increased padding for better spacing */
   background: #e0f7ec;
+  width: 100%;  /* Full width */
+  max-width: 100%;  /* Ensures it stretches full width */
+  margin: 0 auto;
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   color: #2e7d32;
   margin: 0;
 }
 
 .hero .quote {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-style: italic;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .hero button {
@@ -102,7 +105,7 @@ footer {
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -128,30 +131,73 @@ footer {
   transform: translateY(-5px);
 }
 
-/* Responsive Behavior for Smaller Screens */
+/* User Info Section */
+.user-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.user-info-container {
+  background: linear-gradient(145deg, #e0f7ec, #c8e6c9); /* Gradient background */
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow for more depth */
+  width: 80%; /* Reduced width for the user info box */
+  max-width: 600px; /* Set max-width to make it smaller */
+  transition: all 0.3s ease;
+}
+
+.user-info-container:hover {
+  transform: translateY(-5px); /* Slight lift effect when hovered */
+}
+
+.user-info-container h2 {
+  font-size: 2.5rem;
+  color: #2e7d32; /* Darker green for the header */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-info-container p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.user-info-container span {
+  font-weight: bold;
+  color: #4caf50; /* Accent green */
+  font-size: 1.3rem;
+  display: block; /* Make spans block-level for better separation */
+  margin: 5px 0;
+}
+
+/* Add some responsive adjustments for smaller screens */
 @media screen and (max-width: 600px) {
-  .header-nav {
-    flex-direction: column;
-    align-items: flex-start;
+  .hero {
+    padding: 3rem 1rem; /* Slightly reduced padding for mobile */
   }
 
-  .nav-left {
-    flex-direction: column;
-    align-items: flex-start;
+  .hero h1 {
+    font-size: 2.5rem;
   }
 
-  .nav-center {
-    width: 100%;
-    padding-top: 1rem;
+  .hero .quote {
+    font-size: 1rem;
   }
 
-  .nav-right {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
+  .user-info-container {
+    width: 90%;
   }
 
-  .nav-left input {
-    width: 100%;
+  .user-info-container h2 {
+    font-size: 2rem;
+  }
+
+  .user-info-container p {
+    font-size: 1rem;
   }
 }
