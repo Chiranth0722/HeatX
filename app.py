@@ -1,24 +1,19 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 import ast
+import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
-def calculate_ecoscore(code):
-    try:
-        tree = ast.parse(code)
-        functions = sum(isinstance(node, ast.FunctionDef) for node in ast.walk(tree))
-        loops = sum(isinstance(node, (ast.For, ast.While)) for node in ast.walk(tree))
-        lines = len(code.splitlines())
-        score = 100 - (lines * 0.5 + loops * 2 - functions * 1.5)
-        return max(0, min(100, score))
-    except:
-        return 0
+@app.route('/')
+def home():
+    return send_from_directory('.', 'index.html')  # serves your index.html file from root
 
 @app.route('/compare', methods=['GET', 'POST'])
 def compare():
     if request.method == 'POST':
         code1 = request.form['code1']
         code2 = request.form['code2']
+
         score1 = calculate_ecoscore(code1)
         score2 = calculate_ecoscore(code2)
 
@@ -32,6 +27,17 @@ def compare():
         return render_template('code_comparison.html', code1=code1, code2=code2, result=result)
 
     return render_template('code_comparison.html', code1="", code2="", result=None)
+
+def calculate_ecoscore(code):
+    try:
+        tree = ast.parse(code)
+        functions = sum(isinstance(node, ast.FunctionDef) for node in ast.walk(tree))
+        loops = sum(isinstance(node, (ast.For, ast.While)) for node in ast.walk(tree))
+        lines = len(code.splitlines())
+        score = 100 - (lines * 0.5 + loops * 2 - functions * 1.5)
+        return max(0, min(100, score))
+    except:
+        return 0
 
 if __name__ == '__main__':
     app.run(debug=True)
