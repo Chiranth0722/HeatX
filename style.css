@@ -1,56 +1,157 @@
+/* Reset some default styles */
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
 body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f4f9f5;
-    color: #333;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f9f5;
+  color: #333;
+}
+
+/* Header and Footer */
+header, footer {
+  background-color: #2f4f4f;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+
+footer {
+  font-size: 0.8rem;
+  padding: 0.3rem;
+}
+
+/* Header Navigation */
+.header-nav {
+  background-color: #2f4f4f;
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-left {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-left a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-center {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-center input {
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  border: none;
+  width: 200px;
+  min-width: 150px;
+}
+
+.nav-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.profile-icon {
+  background-color: white;
+  color: #2f4f4f;
+  padding: 0.4rem 0.7rem;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: #e0f7ec;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #2e7d32;
+  margin: 0;
+}
+
+.hero .quote {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.hero button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Feature Cards */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.feature-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive Behavior for Smaller Screens */
+@media screen and (max-width: 600px) {
+  .header-nav {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  header, footer {
-    background-color: #2f4f4f;
-    color: white;
-    padding: 1rem;
-    text-align: center;
+
+  .nav-left {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .hero {
-    text-align: center;
-    padding: 3rem;
-    background: #e0f7ec;
+
+  .nav-center {
+    width: 100%;
+    padding-top: 1rem;
   }
-  
-  .hero h1 {
-    font-size: 3rem;
-    color: #2e7d32;
+
+  .nav-right {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
   }
-  
-  .hero button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    margin-top: 1rem;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 8px;
+
+  .nav-left input {
+    width: 100%;
   }
-  
-  .features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-  }
-  
-  .feature-card {
-    background-color: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    text-align: center;
-    transition: transform 0.3s ease;
-  }
-  
-  .feature-card:hover {
-    transform: translateY(-5px);
-  }
-  
+}
