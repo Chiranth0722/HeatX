@@ -1,0 +1,89 @@
+<!-- practice.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HeatX - Practice Code</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #00796b;
+    }
+    textarea {
+      width: 90%;
+      height: 250px;
+      font-family: monospace;
+      font-size: 14px;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #00796b;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .output-container {
+      width: 90%;
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .output-container pre {
+      background-color: #eee;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Practice Coding - HeatX</h1>
+    <textarea id="codeInput" placeholder="Write your Python code here..."></textarea>
+    <button onclick="runCode()">Run Code</button>
+    <h3>Output</h3>
+    <pre id="outputArea"></pre>
+    <h3>EcoScore</h3>
+    <p id="ecoScore"></p>
+    <h3>Execution Metrics</h3>
+    <pre id="metricsArea"></pre>
+  </div>
+  <script>
+    async function runCode() {
+      const code = document.getElementById('codeInput').value;
+      const language = "python";
+      try {
+        const response = await fetch("http://localhost:8000/execute", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code, language })
+        });
+        const result = await response.json();
+        document.getElementById("outputArea").textContent = result.output || "No output";
+        document.getElementById("ecoScore").textContent = `EcoScore: ${result.ecoScore}`;
+        document.getElementById("metricsArea").textContent = JSON.stringify(result.metrics, null, 2);
+      } catch (err) {
+        document.getElementById("outputArea").textContent = `Error: ${err.message}`;
+        document.getElementById("ecoScore").textContent = "EcoScore: -";
+        document.getElementById("metricsArea").textContent = "{}";
+      }
+    }
+  </script>
+</body>
+</html>
