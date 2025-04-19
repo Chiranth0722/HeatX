@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HeatX Practice Arena</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f7fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2d677f;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .main-container {
+      display: flex;
+      padding: 20px;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-right: 20px;
+    }
+
+    .sidebar h3 {
+      color: #2d677f;
+      margin-bottom: 15px;
+    }
+
+    .stats {
+      background-color: #e6f7ff;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .content {
+      flex: 1;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .challenge {
+      border-bottom: 1px solid #e0e0e0;
+      padding: 15px 0;
+    }
+
+    .challenge:last-child {
+      border-bottom: none;
+    }
+
+    .challenge h4 {
+      margin: 0;
+      color: #333;
+    }
+
+    .difficulty {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .start-btn {
+      float: right;
+      background-color: #2d677f;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .start-btn:hover {
+      background-color: #1d4e66;
+    }
+
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🔥 HeatX Practice Arena</h1>
+    <p>Level up your coding skills with real-time eco-efficiency insights!</p>
+  </header>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h3>Your Progress</h3>
+      <div class="stats">⭐ Challenges Solved: <strong>5</strong></div>
+      <div class="stats">💻 Languages Practiced: <strong>Python, Java</strong></div>
+      <div class="stats">🌿 CO₂ Saved: <strong>42g</strong></div>
+    </div>
+
+    <div class="content">
+      <h2>Today's Challenges</h2>
+
+      <div class="challenge">
+        <h4>Two Sum</h4>
+        <p class="difficulty">Easy • Arrays</p>
+        <button class="start-btn" onclick="window.location.href='twosum.html'">Start</button>
+      </div>
+      
+
+      <div class="challenge">
+        <h4>Reverse a Linked List</h4>
+        <p class="difficulty">Medium • Linked Lists</p>
+        <button class="start-btn">Start</button>
+      </div>
+
+      <div class="challenge">
+        <h4>Eco-Sort Optimizer</h4>
+        <p class="difficulty">Hard • Sorting + Efficiency</p>
+        <button class="start-btn">Start</button>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

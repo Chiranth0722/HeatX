@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HeatX – Badges</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      background-color: #f7fafc;
+    }
+
+    header {
+      background-color: #2d3748;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    .badge-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2f855a;
+      margin-bottom: 2rem;
+    }
+
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .badge-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .badge-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .badge-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .badge-title {
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 0.3rem;
+    }
+
+    .badge-desc {
+      font-size: 0.9rem;
+      color: #4a5568;
+    }
+
+    .back-btn {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .back-btn a {
+      text-decoration: none;
+      color: white;
+      background-color: #2f855a;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn a:hover {
+      background-color: #276749;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>HeatX Platform</h2>
+  </header>
+
+  <div class="badge-container">
+    <h1>🏅 Your Earned Badges</h1>
+    <div class="badge-grid" id="badgeGrid">
+      <!-- Badges will be inserted here -->
+    </div>
+
+    <div class="back-btn">
+      <a href="/">← Back to Home</a>
+    </div>
+  </div>
+
+  <script>
+    // Sample badge data – replace with dynamic content if needed
+    const badges = [
+      { icon: "🌱", title: "Eco Hero", description: "Completed 5 eco-friendly challenges" },
+      { icon: "⚡", title: "Speed Coder", description: "Submitted fastest solution in a challenge" },
+      { icon: "🔥", title: "Low Emission Master", description: "Kept CO₂ output under 0.001kg" },
+      { icon: "📈", title: "Efficiency Pro", description: "Earned 90+ EcoScore on 3 codes" },
+      { icon: "🧠", title: "Smart Optimizer", description: "Refactored a code to improve EcoScore" },
+    ];
+
+    const grid = document.getElementById("badgeGrid");
+    badges.forEach(badge => {
+      const card = document.createElement("div");
+      card.className = "badge-card";
+      card.innerHTML = `
+        <div class="badge-icon">${badge.icon}</div>
+        <div class="badge-title">${badge.title}</div>
+        <div class="badge-desc">${badge.description}</div>
+      `;
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>

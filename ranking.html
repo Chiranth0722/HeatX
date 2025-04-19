@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HeatX – Rankings</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      background-color: #f0f4f8;
+    }
+
+    header {
+      background-color: #2d3748;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    .ranking-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2f855a;
+      margin-bottom: 1.5rem;
+    }
+
+    .ranking-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .ranking-table th, .ranking-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .ranking-table th {
+      background-color: #edf2f7;
+      color: #2d3748;
+      font-weight: 600;
+    }
+
+    .ranking-table tr:hover {
+      background-color: #f7fafc;
+    }
+
+    .gold { color: #d4af37; font-weight: bold; }
+    .silver { color: #c0c0c0; font-weight: bold; }
+    .bronze { color: #cd7f32; font-weight: bold; }
+
+    .back-btn {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .back-btn a {
+      text-decoration: none;
+      color: white;
+      background-color: #2f855a;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn a:hover {
+      background-color: #276749;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h2>HeatX Leaderboard</h2>
+  </header>
+
+  <div class="ranking-container">
+    <h1>🏆 Top Eco Coders</h1>
+    <table class="ranking-table" id="rankingTable">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>User</th>
+          <th>EcoScore</th>
+          <th>CO₂ Saved (kg)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamic rows will be inserted -->
+      </tbody>
+    </table>
+
+    <div class="back-btn">
+      <a href="/">← Back to Home</a>
+    </div>
+  </div>
+
+  <script>
+    // Sample data – Replace this with dynamic backend data later
+    const rankings = [
+      { user: "Alice", ecoScore: 96, co2: 0.0083 },
+      { user: "Bob", ecoScore: 93, co2: 0.0079 },
+      { user: "Charlie", ecoScore: 89, co2: 0.0071 },
+      { user: "Dave", ecoScore: 85, co2: 0.0064 },
+      { user: "Eva", ecoScore: 83, co2: 0.0060 },
+    ];
+
+    const tableBody = document.querySelector("#rankingTable tbody");
+    rankings.forEach((entry, index) => {
+      const tr = document.createElement("tr");
+      const rankClass = index === 0 ? "gold" : index === 1 ? "silver" : index === 2 ? "bronze" : "";
+      tr.innerHTML = `
+        <td class="${rankClass}">${index + 1}</td>
+        <td>${entry.user}</td>
+        <td>${entry.ecoScore}</td>
+        <td>${entry.co2.toFixed(4)}</td>
+      `;
+      tableBody.appendChild(tr);
+    });
+  </script>
+
+</body>
+</html>

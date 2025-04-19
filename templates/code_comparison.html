@@ -1,134 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>HeatX | Code Comparison</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>HeatX | Code Comparison</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Updated to load from root -->
-  <link rel="stylesheet" href="/style.css">
+    <!-- Updated to load from root -->
+    <link rel="stylesheet" href="/style.css">
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f6fef8;
-      margin: 0;
-      padding: 0;
-    }
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6fef8;
+            margin: 0;
+            padding: 0;
+        }
 
-    header {
-      background-color: #2d4f3a;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
+        header {
+            background-color: #2d4f3a;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
 
-    .container {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background-color: #ffffff;
-      border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
 
-    .compare-title {
-      font-size: 1.5rem;
-      font-weight: 600;
-      text-align: center;
-      margin-bottom: 2rem;
-      color: #2d4f3a;
-    }
+        .compare-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2d4f3a;
+        }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
 
-    textarea {
-      width: 100%;
-      height: 300px;
-      padding: 1rem;
-      font-size: 1rem;
-      font-family: 'Courier New', Courier, monospace;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      resize: vertical;
-    }
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 1rem;
+            font-size: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            resize: vertical;
+        }
 
-    .compare-btn {
-      background-color: #4caf50;
-      color: white;
-      padding: 1rem;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
+        .compare-btn {
+            background-color: #4caf50;
+            color: white;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
 
-    .compare-btn:hover {
-      background-color: #388e3c;
-    }
+        .compare-btn:hover {
+            background-color: #388e3c;
+        }
 
-    .result {
-      margin-top: 2rem;
-      padding: 1rem;
-      background-color: #e8f5e9;
-      border-left: 6px solid #2e7d32;
-      font-size: 1.2rem;
-      color: #1b5e20;
-      border-radius: 10px;
-    }
+        .result {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #e8f5e9;
+            border-left: 6px solid #2e7d32;
+            font-size: 1.2rem;
+            color: #1b5e20;
+            border-radius: 10px;
+        }
 
-    @media (min-width: 768px) {
-      form {
-        flex-direction: row;
-        justify-content: space-between;
-      }
+        @media (min-width: 768px) {
+            form {
+                flex-direction: row;
+                justify-content: space-between;
+            }
 
-      textarea {
-        width: 48%;
-      }
+            textarea {
+                width: 48%;
+            }
 
-      .compare-btn {
-        width: 100%;
-        margin-top: 1rem;
-      }
+            .compare-btn {
+                width: 100%;
+                margin-top: 1rem;
+            }
 
-      form {
-        flex-wrap: wrap;
-      }
-    }
-  </style>
+            form {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <header>
+<header>
     <h1>HeatX | Code Comparison</h1>
-  </header>
+</header>
 
-  <div class="container">
+<div class="container">
     <div class="compare-title">Compare two versions of your code and find out which is more efficient 🌱</div>
 
-    <form method="post" action="/compare">
-      <textarea name="code1" placeholder="Enter your first code here...">{{ code1 }}</textarea>
-      <textarea name="code2" placeholder="Enter your second code here...">{{ code2 }}</textarea>
-      <button type="submit" class="compare-btn">Compare Code</button>
+    <form id="compareForm">
+        <textarea id="code1" placeholder="Enter your first code here..."></textarea>
+        <textarea id="code2" placeholder="Enter your second code here..."></textarea>
+        <button type="submit" class="compare-btn">Compare Code</button>
     </form>
 
-    {% if result %}
-      <div class="result">
-        <strong>Result:</strong> {{ result }}
-      </div>
-    {% endif %}
-  </div>
+    <div id="result" class="result" style="display:none;"></div>
+</div>
 
-  <!-- Updated to load from root -->
-  <script src="/script.js"></script>
+<script>
+    // Handle form submission
+    document.getElementById('compareForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const code1 = document.getElementById('code1').value;
+        const code2 = document.getElementById('code2').value;
+
+        // Prepare data to send
+        const requestData = {
+            code1: code1,
+            code2: code2,
+            language: 'python'  // Assuming you're comparing Python code
+        };
+
+        // Make the POST request to the backend
+        const response = await fetch('/compare', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestData)
+        });
+
+        // Parse the response JSON
+        const data = await response.json();
+
+        // Display the results
+        if (response.ok) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <h3>Code 1</h3>
+                <pre>${data.code1.output}</pre>
+                <p><strong>EcoScore:</strong> ${data.code1.ecoScore}</p>
+                <p><strong>CPU Time:</strong> ${data.code1.metrics.cpu_time}</p>
+                <p><strong>Memory Usage:</strong> ${data.code1.metrics.memory_usage}</p>
+                <p><strong>CPU Percent:</strong> ${data.code1.metrics.cpu_percent}</p>
+                <p><strong>Temperature Increase:</strong> ${data.code1.metrics.temperature_increase}</p>
+                <p><strong>CO2 Emission:</strong> ${data.code1.metrics.co2_emission}</p>
+
+                <h3>Code 2</h3>
+                <pre>${data.code2.output}</pre>
+                <p><strong>EcoScore:</strong> ${data.code2.ecoScore}</p>
+                <p><strong>CPU Time:</strong> ${data.code2.metrics.cpu_time}</p>
+                <p><strong>Memory Usage:</strong> ${data.code2.metrics.memory_usage}</p>
+                <p><strong>CPU Percent:</strong> ${data.code2.metrics.cpu_percent}</p>
+                <p><strong>Temperature Increase:</strong> ${data.code2.metrics.temperature_increase}</p>
+                <p><strong>CO2 Emission:</strong> ${data.code2.metrics.co2_emission}</p>
+
+                <h3>Comparison</h3>
+                <p><strong>EcoScore Difference:</strong> ${data.comparison_metrics.ecoScore_diff}</p>
+                <p><strong>CPU Percent Difference:</strong> ${data.comparison_metrics.cpu_percent_diff}%</p>
+                <p><strong>Execution Time Difference:</strong> ${data.comparison_metrics.exec_time_diff}s</p>
+                <p><strong>Memory Usage Difference:</strong> ${data.comparison_metrics.memory_usage_diff}MB</p>
+            `;
+            resultDiv.style.display = 'block';
+        } else {
+            alert('Error comparing codes.');
+        }
+    });
+</script>
+
 </body>
 </html>

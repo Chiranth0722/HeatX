@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HeatX – Certifications</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f6f9fc;
+    }
+
+    header {
+      background-color: #2d3748;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    .cert-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2f855a;
+    }
+
+    .user-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #2d3748;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 1.5rem;
+    }
+
+    li {
+      background-color: #edf2f7;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+
+    .back-btn {
+      margin-top: 2rem;
+      display: block;
+      text-align: center;
+    }
+
+    .back-btn a {
+      text-decoration: none;
+      color: white;
+      background-color: #2f855a;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn a:hover {
+      background-color: #276749;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>HeatX Platform</h2>
+  </header>
+
+  <div class="cert-container">
+    <h1>🎓 Certification of Completion</h1>
+    <p class="user-name">This is to certify that <span id="username">User1</span> has successfully completed:</p>
+
+    <ul id="challenge-list">
+      <!-- Challenges will be populated here -->
+    </ul>
+
+    <div class="back-btn">
+      <a href="/">← Back to Home</a>
+    </div>
+  </div>
+
+  <script>
+    // Simulating dynamic data - replace with Firebase or Flask data later
+    const userName = "User1"; // Replace with dynamic name
+    const completedChallenges = [
+      "GreenCode Practice – Loops Challenge",
+      "Eco Learning – Memory Optimization",
+      "Daily Challenge – April 10",
+      "Code Comparison – Sorting Algorithms",
+      "Energy Efficient Recursion"
+    ];
+
+    document.getElementById("username").textContent = userName;
+
+    const challengeList = document.getElementById("challenge-list");
+    completedChallenges.forEach(challenge => {
+      const li = document.createElement("li");
+      li.textContent = challenge;
+      challengeList.appendChild(li);
+    });
+  </script>
+</body>
+</html>

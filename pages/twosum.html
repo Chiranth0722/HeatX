@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Two Sum Challenge</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9fbfd;
+    }
+
+    header {
+      background-color: #2d677f;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #2d677f;
+    }
+
+    select {
+      padding: 8px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 300px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: monospace;
+      resize: vertical;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #2d677f;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1f4e63;
+    }
+
+    .output-box, .suggestion-box {
+      background-color: #eef7fa;
+      border-left: 4px solid #2d677f;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔢 Two Sum Challenge</h1>
+    <p>Solve the problem in your favorite language with eco-efficient coding!</p>
+  </header>
+
+  <div class="container">
+    <h2>Select Language</h2>
+    <select id="language">
+      <option value="python">Python</option>
+      <option value="java">Java</option>
+      <option value="cpp">C++</option>
+      <option value="c">C</option>
+      <option value="javascript">JavaScript</option>
+    </select>
+
+    <h2>Your Code</h2>
+    <textarea id="code" placeholder="Write your code here..."></textarea>
+    <button onclick="submitCode()">Submit Code</button>
+
+    <div id="output" class="output-box" style="display:none;"></div>
+    <div id="suggestion" class="suggestion-box" style="display:none;"></div>
+  </div>
+
+  <script>
+    function submitCode() {
+      const code = document.getElementById("code").value;
+      const outputBox = document.getElementById("output");
+      const suggestionBox = document.getElementById("suggestion");
+
+      if (!code.trim()) {
+        alert("Please enter some code before submitting.");
+        return;
+      }
+
+      // Placeholder output simulation
+      outputBox.innerHTML = '<strong>Output:</strong><br>[0, 1]';
+      outputBox.style.display = 'block';
+
+      // Placeholder suggestion logic
+      if (code.includes("for") && code.includes("for")) {
+        suggestionBox.innerHTML = '<strong>Suggestion:</strong> Try using a hashmap to reduce time complexity from O(n²) to O(n).';
+      } else {
+        suggestionBox.innerHTML = '<strong>Good job!</strong> Your code looks efficient.';
+      }
+      suggestionBox.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

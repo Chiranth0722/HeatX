@@ -12,10 +12,17 @@ def estimate_power_usage():
 # Simulate a time window
 initial_power = estimate_power_usage()
 print(f"Initial Estimated Power: {initial_power:.2f} W")
-time.sleep(5)
+a=0
+def fn(a):
+    for i in range(10):
+        a=a+i
+fn(a)
 final_power = estimate_power_usage()
 print(f"Final Estimated Power: {final_power:.2f} W")
-
+p=final_power-initial_power
+if p<0:
+    p=p*-1
+print('Power consumed:',p)
 # Calculate average and CO2
 average_power = (initial_power + final_power) / 2
 runtime_seconds = 5
