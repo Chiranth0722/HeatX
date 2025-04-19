@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <title>HeatX | Code Comparison</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Flask static CSS -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <!-- Updated to load from root -->
+  <link rel="stylesheet" href="/style.css">
 
   <style>
     body {
@@ -128,7 +128,7 @@
     {% endif %}
   </div>
 
-  <!-- Optional Flask static JS -->
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <!-- Updated to load from root -->
+  <script src="/script.js"></script>
 </body>
 </html>
