@@ -73,17 +73,19 @@ footer {
 /* Profile Dropdown */
 .profile-wrapper {
   position: relative;
+  display: inline-block;
 }
 
 .profile-icon {
   background-color: white;
   color: #2f4f4f;
-  padding: 0.4rem 0.9rem;
+  padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 1rem;
   cursor: pointer;
   border: 1px solid #ccc;
   transition: background 0.3s;
+  white-space: nowrap;
 }
 
 .profile-icon:hover {
@@ -100,7 +102,7 @@ footer {
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 0.5rem 0;
-  min-width: 160px;
+  min-width: 180px;
   z-index: 999;
   text-align: left;
 }

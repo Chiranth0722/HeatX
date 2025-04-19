@@ -32,3 +32,20 @@ function setupDropdownToggle() {
     }
   });
 }
+function setupLogout() {
+  const logoutBtn = document.getElementById("logout-btn");
+  if (!logoutBtn) return;
+
+  logoutBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // Simulate logout
+    localStorage.clear(); // Clear stored user data
+    sessionStorage.clear(); // Clear session data if any
+
+    alert("Logged out successfully!");
+
+    // Redirect to login page
+    window.location.href = "../login.html"; // Change path as per your project
+  });
+}
