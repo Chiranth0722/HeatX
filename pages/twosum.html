@@ -93,30 +93,26 @@
 
     <div id="output" class="output-box" style="display:none;"></div>
     <div id="suggestion" class="suggestion-box" style="display:none;"></div>
+    
+    <h3>EcoScore</h3>
+    <p id="ecoScore">-</p>
   </div>
 
   <script>
-    function submitCode() {
-      const code = document.getElementById("code").value;
-      const outputBox = document.getElementById("output");
-      const suggestionBox = document.getElementById("suggestion");
-
-      if (!code.trim()) {
-        alert("Please enter some code before submitting.");
-        return;
+    async function submitCode() {
+      const code = document.getElementById('code').value;
+      const language = "python";
+      try {
+        const response = await fetch("http://localhost:8000/execute", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code, language })
+        });
+        const result = await response.json();
+        document.getElementById("ecoScore").textContent = `EcoScore: ${result.ecoScore}`;
+      } catch (err) {
+        document.getElementById("ecoScore").textContent = "EcoScore: -";
       }
-
-      // Placeholder output simulation
-      outputBox.innerHTML = '<strong>Output:</strong><br>[0, 1]';
-      outputBox.style.display = 'block';
-
-      // Placeholder suggestion logic
-      if (code.includes("for") && code.includes("for")) {
-        suggestionBox.innerHTML = '<strong>Suggestion:</strong> Try using a hashmap to reduce time complexity from O(n²) to O(n).';
-      } else {
-        suggestionBox.innerHTML = '<strong>Good job!</strong> Your code looks efficient.';
-      }
-      suggestionBox.style.display = 'block';
     }
   </script>
 </body>
