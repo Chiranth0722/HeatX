@@ -11,12 +11,13 @@
 
   <div class="nav-right">
     <div class="profile-wrapper">
-      <div class="profile-icon">Profile 👨</div>
-      <div class="profile-dropdown">
+      <div class="profile-icon" onclick="toggleDropdown()">Profile 👨</div>
+      <div class="profile-dropdown" id="profileDropdown">
         <a href="#">View Profile</a>
         <a href="#">Settings</a>
-        <a href="#" id="logout-btn">Logout</a>
+        <a href="#" onclick="logout()">Logout</a>
       </div>
     </div>
   </div>
+  
 </nav>
