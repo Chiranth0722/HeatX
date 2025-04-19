@@ -16,7 +16,9 @@ a=0
 def fn(a):
     for i in range(10):
         a=a+i
+    time.sleep(5)
 fn(a)
+
 final_power = estimate_power_usage()
 print(f"Final Estimated Power: {final_power:.2f} W")
 p=final_power-initial_power
