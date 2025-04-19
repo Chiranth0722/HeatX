@@ -6,22 +6,6 @@
   <title>HeatX – Eco Coding Platform</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-  <script>
-    // Your Firebase config
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_STORAGE_BUCKET",
-      messagingSenderId: "YOUR_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-    firebase.initializeApp(firebaseConfig);
-  </script>
 </head>
 <body>
   <!-- Header Include -->
@@ -55,21 +39,32 @@
     </section>
 
     <section class="features">
+
       <div class="feature-card">
         <h2>GreenCode Practice</h2>
         <p>Analyze your code’s environmental impact.</p>
       </div>
-      <div class="feature-card">
-        <h2>Code Comparison</h2>
-        <p>Compare your code with optimized versions.</p>
-      </div>
+
+      <!-- ✅ This whole card is now clickable -->
+      <a href="/compare" style="text-decoration: none; color: inherit;">
+        <div class="feature-card">
+          <h2>Code Comparison</h2>
+          <p>Compare your code with optimized versions.</p>
+        </div>        
+      </a>      
+
       <div class="feature-card">
         <h2>Eco Learning</h2>
         <p>Interactive lessons on efficient coding.</p>
       </div>
+
       <div class="feature-card">
-        <h2>EcoScore + CO₂</h2>
+        <h2>Calculate</h2>
         <p>Calculate emissions and CPU heat usage.</p>
+      </div>
+      <div class="feature-card">
+        <h2>Daily challenges</h2>
+        <p>Level up your skills.</p>
       </div>
     </section>
   </main>
