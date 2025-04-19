@@ -67,24 +67,68 @@ footer {
 .nav-right {
   display: flex;
   justify-content: flex-end;
+  position: relative;
+}
+
+/* Profile Dropdown */
+.profile-wrapper {
+  position: relative;
 }
 
 .profile-icon {
   background-color: white;
   color: #2f4f4f;
-  padding: 0.4rem 0.7rem;
-  border-radius: 50%;
-  font-size: 1.1rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  font-size: 1rem;
   cursor: pointer;
+  border: 1px solid #ccc;
+  transition: background 0.3s;
 }
 
-/* Hero Section - Full screen width */
+.profile-icon:hover {
+  background-color: #f0f0f0;
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 120%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  min-width: 160px;
+  z-index: 999;
+  text-align: left;
+}
+
+.profile-dropdown a {
+  display: block;
+  padding: 0.6rem 1rem;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.profile-dropdown a:hover {
+  background-color: #f5f5f5;
+}
+
+.profile-wrapper.show-dropdown .profile-dropdown {
+  display: block;
+}
+
+/* Hero Section */
 .hero {
   text-align: center;
-  padding: 5rem 1rem;  /* Increased padding for better spacing */
+  padding: 5rem 1rem;
   background: #e0f7ec;
-  width: 100%;  /* Full width */
-  max-width: 100%;  /* Ensures it stretches full width */
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -175,7 +219,7 @@ footer {
   margin: 5px 0;
 }
 
-/* Add some responsive adjustments for smaller screens */
+/* Responsive Adjustments */
 @media screen and (max-width: 600px) {
   .hero {
     padding: 3rem 1rem; /* Slightly reduced padding for mobile */

@@ -8,8 +8,19 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-  <header id="main-header"></header>
+  <!-- Header -->
+  <header id="main-header">
+    <!-- Profile Icon and Dropdown -->
+    <div class="profile-icon-container">
+      <div class="profile-icon" onclick="toggleDropdown()">👤</div>
+      <div id="profile-dropdown" class="profile-dropdown">
+        <a href="#">My Profile</a>
+        <a href="#" onclick="logout()">Sign Out</a>
+      </div>
+    </div>
+  </header>
 
+  <!-- Main Section -->
   <main>
     <section class="hero">
       <h1>Welcome to HeatX</h1>
@@ -25,7 +36,16 @@
         <p>Total Heat Generated: <span id="totalHeatGenerated">0 °C</span></p>
       </div>
     </section>
-
+    <div class="nav-right">
+      <div class="profile-icon">
+        <i class="fa fa-user"></i>
+      </div>
+      <div class="profile-dropdown">
+        <a href="#">My Profile</a>
+        <a href="#">Sign Out</a>
+      </div>
+    </div>
+    
     <section class="features">
       <div class="feature-card">
         <h2>GreenCode Practice</h2>
@@ -46,12 +66,15 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer id="main-footer"></footer>
 
+  <!-- Firebase Script -->
   <script>
     const auth = firebase.auth();
     const db = firebase.firestore();
 
+    // Firebase Auth state listener
     auth.onAuthStateChanged(user => {
       if (user) {
         const uid = user.uid;
@@ -71,6 +94,19 @@
         window.location.href = 'auth.html';
       }
     });
+
+    // Function to toggle the dropdown menu visibility
+    function toggleDropdown() {
+      const dropdown = document.getElementById("profile-dropdown");
+      dropdown.classList.toggle("show");
+    }
+
+    // Function to log out
+    function logout() {
+      firebase.auth().signOut().then(() => {
+        window.location.href = "auth.html";  // Redirect to login page after sign-out
+      });
+    }
   </script>
 </body>
 </html>
