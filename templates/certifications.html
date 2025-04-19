@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HeatX – Certifications</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       font-family: "Segoe UI", sans-serif;
@@ -14,51 +13,72 @@
     }
 
     header {
-      background-color: #2d3748;
+      background-color: #2f4f4f;
       color: white;
       padding: 1rem 2rem;
       text-align: center;
     }
 
     .cert-container {
-      max-width: 800px;
+      max-width: 1300px;
       margin: 2rem auto;
-      padding: 2rem;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
     }
 
     h1 {
       text-align: center;
       color: #2f855a;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
     }
 
     .user-name {
       font-size: 1.2rem;
-      font-weight: 600;
-      color: #2d3748;
-      margin-top: 1rem;
       text-align: center;
+      color: #4a5568;
+      margin-bottom: 2rem;
     }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin-top: 1.5rem;
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
     }
 
-    li {
-      background-color: #edf2f7;
-      padding: 1rem;
+    .cert-card {
+      background-color: white;
+      border: 3px solid #38a169;
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cert-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .cert-icon {
+      width: 48px;
+      margin: 0 auto 1rem;
+    }
+
+    .cert-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #2f855a;
       margin-bottom: 0.5rem;
-      border-radius: 8px;
-      font-weight: 500;
+    }
+
+    .cert-text {
+      font-size: 1rem;
+      color: #2d3748;
     }
 
     .back-btn {
-      margin-top: 2rem;
-      display: block;
+      margin-top: 2.5rem;
       text-align: center;
     }
 
@@ -66,7 +86,7 @@
       text-decoration: none;
       color: white;
       background-color: #2f855a;
-      padding: 0.75rem 1.5rem;
+      padding: 0.75rem 1.75rem;
       border-radius: 8px;
       font-weight: bold;
       transition: background-color 0.3s ease;
@@ -84,11 +104,11 @@
 
   <div class="cert-container">
     <h1>🎓 Certification of Completion</h1>
-    <p class="user-name">This is to certify that <span id="username">User1</span> has successfully completed:</p>
+    <p class="user-name">This is to certify that <span id="username">Chiranth K K</span> has successfully completed the following challenges:</p>
 
-    <ul id="challenge-list">
-      <!-- Challenges will be populated here -->
-    </ul>
+    <div id="certificates" class="cert-grid">
+      <!-- Certificate cards will be inserted here -->
+    </div>
 
     <div class="back-btn">
       <a href="/">← Back to Home</a>
@@ -96,8 +116,7 @@
   </div>
 
   <script>
-    // Simulating dynamic data - replace with Firebase or Flask data later
-    const userName = "User1"; // Replace with dynamic name
+    const userName = "Chiranth K K";
     const completedChallenges = [
       "GreenCode Practice – Loops Challenge",
       "Eco Learning – Memory Optimization",
@@ -105,15 +124,29 @@
       "Code Comparison – Sorting Algorithms",
       "Energy Efficient Recursion"
     ];
-
+  
     document.getElementById("username").textContent = userName;
-
-    const challengeList = document.getElementById("challenge-list");
-    completedChallenges.forEach(challenge => {
-      const li = document.createElement("li");
-      li.textContent = challenge;
-      challengeList.appendChild(li);
+  
+    const container = document.getElementById("certificates");
+  
+    completedChallenges.forEach((challenge, index) => {
+      const card = document.createElement("div");
+      card.className = "cert-card";
+      card.style.cursor = "pointer";
+  
+      card.innerHTML = `
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Certificate Icon" class="cert-icon">
+        <div class="cert-title">${challenge}</div>
+        <div class="cert-text">Awarded to <strong>${userName}</strong></div>
+      `;
+  
+      // Redirect to detail page with index
+      card.addEventListener("click", () => {
+        window.location.href = `certificate-detail.html?cert=${index}`;
+      });
+  
+      container.appendChild(card);
     });
-  </script>
+  </script>  
 </body>
 </html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Certificate Detail</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #e6f0ea;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .certificate-wrapper {
+      background: white;
+      padding: 3rem;
+      border: 8px solid #38a169;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 900px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .certificate-wrapper h1 {
+      font-size: 2.5rem;
+      color: #2f855a;
+      margin-bottom: 1rem;
+    }
+
+    .certificate-wrapper p {
+      font-size: 1.2rem;
+      color: #4a5568;
+      margin-bottom: 1.2rem;
+    }
+
+    .cert-icon {
+      width: 70px;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-btn {
+      margin-top: 2rem;
+    }
+
+    .back-btn a {
+      text-decoration: none;
+      color: white;
+      background-color: #2f855a;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn a:hover {
+      background-color: #276749;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="certificate-wrapper">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="cert-icon" alt="Certificate Icon" />
+    <h1 id="certTitle">Loading...</h1>
+    <p><strong>Recipient:</strong> <span id="userName">Chiranth K K</span></p>
+    <p id="certDescription">This certificate confirms successful completion of the challenge.</p>
+  </div>
+
+  <!-- Back button outside certificate card -->
+  <div class="back-btn">
+    <a href="certifications.html">← Back to Certifications</a>
+  </div>
+
+  <script>
+    const challenges = [
+      {
+        title: "GreenCode Practice – Loops Challenge",
+        description: "This certificate is awarded for mastering loop optimizations in energy-efficient coding practices."
+      },
+      {
+        title: "Eco Learning – Memory Optimization",
+        description: "Awarded for understanding and applying memory-efficient strategies in code."
+      },
+      {
+        title: "Daily Challenge – April 10",
+        description: "Granted for solving the daily algorithmic challenge on April 10."
+      },
+      {
+        title: "Code Comparison – Sorting Algorithms",
+        description: "For analyzing, comparing, and improving the efficiency of sorting algorithms."
+      },
+      {
+        title: "Energy Efficient Recursion",
+        description: "Certification for implementing optimized recursive algorithms that reduce computational load."
+      }
+    ];
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const certIndex = parseInt(urlParams.get('cert'));
+
+    const userName = "Chiranth K K";
+
+    if (!isNaN(certIndex) && challenges[certIndex]) {
+      const cert = challenges[certIndex];
+      document.getElementById("certTitle").textContent = cert.title;
+      document.getElementById("certDescription").textContent = cert.description;
+      document.getElementById("userName").textContent = userName;
+    } else {
+      document.querySelector(".certificate-wrapper").innerHTML = `
+        <h1>Certificate Not Found</h1>
+        <p>Sorry, the requested certificate doesn't exist.</p>
+      `;
+    }
+  </script>
+</body>
+</html>
