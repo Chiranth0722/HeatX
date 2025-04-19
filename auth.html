@@ -2,20 +2,22 @@
 <html>
 <head>
   <title>HeatX - Login / Signup</title>
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="auth-container">
-    <h1>Welcome to HeatX</h1>
+  <div class="auth-page">
+    <div class="auth-container">
+      <h1>Welcome to HeatX</h1>
 
-    <input type="email" id="email" placeholder="Email" />
-    <input type="password" id="password" placeholder="Password" />
+      <input type="email" id="email" placeholder="Email" />
+      <input type="password" id="password" placeholder="Password" />
 
-    <button onclick="login()">Login</button>
-    <button onclick="signup()">Sign Up</button>
-    <button onclick="logout()">Logout</button>
+      <button onclick="login()">Login</button>
+      <button onclick="signup()">Sign Up</button>
 
-    <p id="userStatus"></p>
+
+      <p id="userStatus"></p>
+    </div>
   </div>
 
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
@@ -24,13 +26,13 @@
 
   <script>
     const firebaseConfig = {
-        apiKey: "AIzaSyAhBZwf4ebPNBlLfPB0w3uFjcaa9tZb3Yc",
-        authDomain: "heatx-56f5a.firebaseapp.com",
-        projectId: "heatx-56f5a",
-        storageBucket: "heatx-56f5a.firebasestorage.app",
-        messagingSenderId: "980918327594",
-        appId: "1:980918327594:web:4cee02a19fbccaaa2fa653",
-        measurementId: "G-LW18NE3TVM"
+      apiKey: "AIzaSyAhBZwf4ebPNBlLfPB0w3uFjcaa9tZb3Yc",
+      authDomain: "heatx-56f5a.firebaseapp.com",
+      projectId: "heatx-56f5a",
+      storageBucket: "heatx-56f5a.firebasestorage.app",
+      messagingSenderId: "980918327594",
+      appId: "1:980918327594:web:a931a9a97216ad8e2fa653",
+      measurementId: "G-ZBC5JGV0PS"
     };
 
     firebase.initializeApp(firebaseConfig);
@@ -66,23 +68,12 @@
           badges: [],
           recentSubmissions: []
         });
-
-        window.location.href = "index.html"; // Redirect after signup
+        
+        window.location.href = "index.html";
       })
       .catch((error) => alert(error.message));
     }
 
-    function logout() {
-      auth.signOut().then(() => {
-        document.getElementById("userStatus").innerText = `Logged out`;
-      });
-    }
-
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        window.location.href = "index.html";  
-      }
-    });
   </script>
 </body>
 </html>

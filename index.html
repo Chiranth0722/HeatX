@@ -4,12 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HeatX – Eco Coding Platform</title>
-  <link rel="stylesheet" href="/style.css">
-  <script defer src="/script.js"></script>  
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <header id="main-header"></header>
+  <!-- Header Include -->
+  <header id="main-header">
+    <!-- Profile Icon and Dropdown -->
+    <div class="profile-icon-container">
+      <div class="profile-icon" onclick="toggleDropdown()">👤</div>
+      <div id="profileDropdown" class="profile-dropdown">
+        <a href="#">My Profile</a>
+        <a href="#" onclick="logout(event)">Sign Out</a>
 
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Section -->
   <main>
     <section class="hero">
       <h1>Welcome to HeatX</h1>
@@ -19,7 +31,7 @@
 
     <section class="user-info">
       <div class="user-info-container">
-        <h2>Hey, [User's Name]</h2>
+        <h2>Hey, <span id="user-email">[User]</span></h2>
         <p>Your EcoScore: <span id="ecoScore">0</span></p>
         <p>Total CO₂ Saved: <span id="totalCO2Saved">0 kg</span></p>
         <p>Total Heat Generated: <span id="totalHeatGenerated">0 °C</span></p>
@@ -54,17 +66,19 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer id="main-footer"></footer>
 
+  <!-- Firebase User & Auth Scripts -->
   <script>
     const auth = firebase.auth();
     const db = firebase.firestore();
-
+  
     auth.onAuthStateChanged(user => {
       if (user) {
         const uid = user.uid;
         document.getElementById('user-email').innerText = user.email;
-
+  
         db.collection("users").doc(uid).get()
           .then((doc) => {
             if (doc.exists) {
@@ -79,6 +93,20 @@
         window.location.href = 'auth.html';
       }
     });
+  
+    function toggleDropdown() {
+      const dropdown = document.getElementById("profile-dropdown");
+      dropdown.classList.toggle("show");
+    }
+  
+    // ✅ Add this updated logout function
+    function logout(event) {
+      event.preventDefault(); // Prevent page reload
+      firebase.auth().signOut()
+        .then(() => window.location.href = "auth.html")
+        .catch(error => console.error("Logout Error:", error));
+    }
   </script>
+  
 </body>
 </html>
