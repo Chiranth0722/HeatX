@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>View Profile - HeatX</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #e1fbe4, #e5f7fd);
+    }
+    .leaf {
+      position: absolute;
+      width: 60px;
+      opacity: 0.5;
+    }
+    .leaf-1 { top: 10px; left: 10px; transform: rotate(20deg); }
+    .leaf-2 { top: 10px; right: 10px; transform: rotate(-30deg); }
+    .leaf-3 { bottom: 10px; left: 20px; transform: rotate(-10deg); }
+    .leaf-4 { bottom: 20px; right: 20px; transform: rotate(15deg); }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
+
+  <!-- Decorative Leaves -->
+  <img src="https://www.svgrepo.com/show/309997/leaf.svg" class="leaf leaf-1" />
+  <img src="https://www.svgrepo.com/show/309997/leaf.svg" class="leaf leaf-2" />
+  <img src="https://www.svgrepo.com/show/309997/leaf.svg" class="leaf leaf-3" />
+  <img src="https://www.svgrepo.com/show/309997/leaf.svg" class="leaf leaf-4" />
+
+  <!-- Animated Background Blobs -->
+  <div class="absolute top-0 left-0 w-96 h-96 bg-green-200 rounded-full opacity-30 mix-blend-multiply filter blur-3xl animate-pulse -z-10"></div>
+  <div class="absolute bottom-10 right-10 w-96 h-96 bg-blue-200 rounded-full opacity-20 mix-blend-multiply filter blur-2xl animate-pulse delay-2000 -z-10"></div>
+
+  <!-- Profile Card -->
+  <div class="bg-white/80 backdrop-blur-md border-[5px] border-green-400 rounded-3xl p-10 w-full max-w-4xl text-center shadow-2xl relative z-10 transition-all duration-300 hover:scale-[1.01]">
+    
+    <!-- Profile Picture -->
+    <div class="flex justify-center mb-6">
+      <div class="w-40 h-40 rounded-full bg-green-100 border-4 border-green-500 flex items-center justify-center text-green-700 text-6xl font-bold shadow-md">
+        👤
+      </div>
+    </div>
+
+    <!-- User Name -->
+    <h1 class="text-4xl font-extrabold text-green-800 mb-1 hover:text-lime-600 hover:scale-105 transition duration-300 cursor-pointer">
+      Chiranth KK
+    </h1>
+    
+    <!-- Stylish Attribute Box -->
+    <div class="mt-8 bg-lime-50 border border-lime-200 rounded-2xl shadow-xl p-6">
+      <table class="min-w-full text-left">
+        <tbody>
+          <tr class="hover:bg-lime-100 transition">
+            <td class="px-4 py-3 font-semibold text-gray-700 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">Full Name</td>
+            <td class="px-4 py-3 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">Chiranth KK</td>
+          </tr>
+          <tr class="hover:bg-lime-100 transition">
+            <td class="px-4 py-3 font-semibold text-gray-700 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">Username</td>
+            <td class="px-4 py-3 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">chiru123</td>
+          </tr>
+          <tr class="hover:bg-lime-100 transition">
+            <td class="px-4 py-3 font-semibold text-gray-700 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">Email</td>
+            <td class="px-4 py-3 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">chiru@example.com</td>
+          </tr>
+          <tr class="hover:bg-lime-100 transition">
+            <td class="px-4 py-3 font-semibold text-gray-700 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">Pursuing</td>
+            <td class="px-4 py-3 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">B.Tech in Computer Science</td>
+          </tr>
+          <tr class="hover:bg-lime-100 transition">
+            <td class="px-4 py-3 font-semibold text-gray-700 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">Date of Birth</td>
+            <td class="px-4 py-3 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">12th March 2003</td>
+          </tr>
+          <tr class="hover:bg-lime-100 transition">
+            <td class="px-4 py-3 font-semibold text-gray-700 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">Location</td>
+            <td class="px-4 py-3 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">Bengaluru, India</td>
+          </tr>
+          <tr class="hover:bg-lime-100 transition">
+            <td class="px-4 py-3 font-semibold text-gray-700 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">EcoScore</td>
+            <td class="px-4 py-3 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">42</td>
+          </tr>
+          <tr class="hover:bg-lime-100 transition">
+            <td class="px-4 py-3 font-semibold text-gray-700 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">Total CO₂ Saved</td>
+            <td class="px-4 py-3 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">18.5 kg</td>
+          </tr>
+          <tr class="hover:bg-lime-100 transition">
+            <td class="px-4 py-3 font-semibold text-gray-700 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">Joined On</td>
+            <td class="px-4 py-3 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">January 5, 2024</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</body>
+</html>

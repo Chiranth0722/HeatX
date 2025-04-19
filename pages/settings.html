@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Settings - HeatX</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #e1fbe4, #e5f7fd);
+    }
+    .leaf {
+      position: absolute;
+      width: 60px;
+      opacity: 0.5;
+    }
+    .leaf-1 { top: 10px; left: 10px; transform: rotate(20deg); }
+    .leaf-2 { top: 10px; right: 10px; transform: rotate(-30deg); }
+    .leaf-3 { bottom: 10px; left: 20px; transform: rotate(-10deg); }
+    .leaf-4 { bottom: 20px; right: 20px; transform: rotate(15deg); }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
+
+  <!-- Decorative Leaves -->
+  <img src="https://www.svgrepo.com/show/309997/leaf.svg" class="leaf leaf-1" />
+  <img src="https://www.svgrepo.com/show/309997/leaf.svg" class="leaf leaf-2" />
+  <img src="https://www.svgrepo.com/show/309997/leaf.svg" class="leaf leaf-3" />
+  <img src="https://www.svgrepo.com/show/309997/leaf.svg" class="leaf leaf-4" />
+
+  <!-- Animated Background Blobs -->
+  <div class="absolute top-0 left-0 w-96 h-96 bg-green-200 rounded-full opacity-30 mix-blend-multiply filter blur-3xl animate-pulse -z-10"></div>
+  <div class="absolute bottom-10 right-10 w-96 h-96 bg-blue-200 rounded-full opacity-20 mix-blend-multiply filter blur-2xl animate-pulse delay-2000 -z-10"></div>
+
+  <!-- Settings Card -->
+  <div class="bg-white/80 backdrop-blur-md border-[5px] border-green-400 rounded-3xl p-10 w-full max-w-4xl text-center shadow-2xl relative z-10 transition-all duration-300 hover:scale-[1.01]">
+    
+    <!-- Settings Title -->
+    <h1 class="text-4xl font-extrabold text-green-800 mb-1 hover:text-lime-600 hover:scale-105 transition duration-300 cursor-pointer">
+      Settings
+    </h1>
+    <p class="text-lg text-gray-600 italic mb-6">Customize your experience</p>
+
+    <!-- Settings Options -->
+    <div class="mt-8 bg-lime-50 border border-lime-200 rounded-2xl shadow-xl p-6">
+      <table class="min-w-full text-left">
+        <tbody>
+          <!-- Change Password -->
+          <tr class="hover:bg-lime-100 transition">
+            <td class="px-4 py-3 font-semibold text-gray-700 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">Change Password</td>
+            <td class="px-4 py-3 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">
+              <a href="#" class="text-lime-600">Change</a>
+            </td>
+          </tr>
+
+          <!-- Update Email -->
+          <tr class="hover:bg-lime-100 transition">
+            <td class="px-4 py-3 font-semibold text-gray-700 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">Update Email</td>
+            <td class="px-4 py-3 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">
+              <a href="#" class="text-lime-600">Update</a>
+            </td>
+          </tr>
+
+          <!-- Notification Settings -->
+          <tr class="hover:bg-lime-100 transition">
+            <td class="px-4 py-3 font-semibold text-gray-700 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">Notification Settings</td>
+            <td class="px-4 py-3 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">
+              <a href="#" class="text-lime-600">Manage</a>
+            </td>
+          </tr>
+
+          <!-- Language Preference -->
+          <tr class="hover:bg-lime-100 transition">
+            <td class="px-4 py-3 font-semibold text-gray-700 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">Language Preference</td>
+            <td class="px-4 py-3 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">
+              <a href="#" class="text-lime-600">Select</a>
+            </td>
+          </tr>
+
+          <!-- Privacy Settings -->
+          <tr class="hover:bg-lime-100 transition">
+            <td class="px-4 py-3 font-semibold text-gray-700 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">Privacy Settings</td>
+            <td class="px-4 py-3 hover:text-lime-600 hover:scale-105 transition duration-200 cursor-pointer">
+              <a href="#" class="text-lime-600">Adjust</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
